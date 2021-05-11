@@ -1,2 +1,2 @@
-# travel
- travel app
+# Travel
+Application for travel
