@@ -61,7 +61,6 @@ function upload(selecetor, options) {
         </div>
       `);
       document.getElementById('addPhoto').addEventListener('click', () => {
-        console.log('sdsaddas');
         document.querySelector('.preview-image').innerHTML = `
         <div class='loader-block'>
           <div class='loader'></div>

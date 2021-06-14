@@ -33,8 +33,7 @@ if (document.querySelector('.btn-send')) {
   const send = async (event) => {
     const { id } = event.target;
     const ctx = event.target.previousElementSibling.value;
-    console.log(ctx, id);
-
+s
     const response = await fetch(`/travels/${id}/ctx`, {
       method: 'POST',
       body: JSON.stringify({ id, ctx }),
@@ -44,18 +43,11 @@ if (document.querySelector('.btn-send')) {
     });
     const msg = await response.json();
     if (msg) {
-      console.log(event.target.parentNode);
       const elem = event.target.previousElementSibling.previousElementSibling;
       elem.insertAdjacentHTML('afterend', '<h3>Отправлено успешно</h3>');
       event.target.previousElementSibling.value = '';
       event.target.remove();
-      // window.location = 'http://localhost:3000/mytravels'
     }
-    // if (result.status) {
-    //   event.target.parentNode.innerHTML = `<h3>${result.message}</h3>`;
-    // } else {
-    //   event.target.parentNode.innerHTML = `<h3>${result.message}</h3>`;
-    // }
   };
   for (const elem of document.querySelectorAll('.btn-send')) {
     elem.addEventListener('click', send);

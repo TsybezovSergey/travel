@@ -4,14 +4,14 @@ const Travel = require('../model/travel.js');
 const { sessionChecker } = require('../middleware/auth');
 const { allPosts } = require('../db/firebase');
 require('dotenv').config().parsed;
-// const dotenv = require('dotenv').config().parsed;
+
 const router = Router();
 
 router.route('/').get(sessionChecker, async (req, res) => {
   try {
     const { email } = req.session.user;
     const userBD = await User.findOne({ email });
-    console.log(userBD.organizator);
+
     const posts = await allPosts(userBD.organizator);
     // await userBD.populate('travels').execPopulate();
     // await userBD.populate('organizator').execPopulate();

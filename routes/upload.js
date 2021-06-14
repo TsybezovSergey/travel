@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const firebase = require('firebase');
 require('firebase/storage');
-const bucket = require('s3-bucket');
 const Travel = require('../model/travel.js');
 const User = require('../model/user.js');
 // const dotenv = require('dotenv').config().parsed;
@@ -11,11 +10,9 @@ router.post('/', async (req, res, next) => {
   try {
     if (req.body.travel) {
       const { id } = req.body;
-      console.log(req.body.id);
       const url = req.body.travelUrl;
       const travel2 = await Travel.findOne({ _id: id });
       const travel = await Travel.findOneAndUpdate({ _id: id }, { $set: { url } }, { returnOriginal: false });
-      console.log(travel2);
       res.json({ status: true });
       return;
     }

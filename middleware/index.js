@@ -29,7 +29,7 @@ module.exports = function (app) {
   });
 
   app.engine('hbs', hbs.engine);
-  console.log(__dirname);
+
   app.set('views', path.join('views'));
   // app.engine('hbs', hbs.engine);
   app.set('view engine', 'hbs');

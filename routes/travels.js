@@ -12,7 +12,7 @@ const router = Router();
 router.route('/').get(sessionChecker, async (req, res) => {
   const { email } = req.session.user;
   const user = await User.findOne({ email });
-  console.log(req.session.user)
+
   if (req.session.user.organizator) {
     return res.redirect('/');
   }
@@ -100,17 +100,6 @@ router.route('/:id').delete(async (req, res) => {
       if (travel.organizator.email === email) {
         return res.render('travel', { travel, organizator: true });
       }
-      // const lon = Number(travel.coordinate.split(',')[0]).toFixed(5);
-      // const lat = Number(travel.coordinate.split(',')[1]).toFixed(5);
-      // console.log(lat, lon);
-      // const response = await fetch(`https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${lon}&lang=ru_RU&limit=6`, {
-      //   headers: {
-      //     'X-Yandex-API-Key': process.env.API_WEATHER,
-      //   },
-      // });
-      // const result = await response.json();
-      // const arrayOfForecasts = result.forecasts
-      // console.log(result.forecasts);
       res.render('travel', { travel });
     } catch (e) {
       console.log(e);
@@ -162,8 +151,7 @@ router.route('/:id/out').put(async (req, res) => {
     await user.populate('travels').execPopulate();
     const newUsers = travel.users.filter((e) => e._id === id);
     const newTravels = user.travels.filter((e) => e._id === travel._id);
-    console.log('newTravels', newTravels);
-    console.log('newUsers', newUsers);
+
     await travel.updateOne({ $set: { users: newUsers } });
     await user.updateOne({ $set: { travels: newTravels } });
 
@@ -180,9 +168,7 @@ router.route('/:id/ctx').post(sessionChecker, async (req, res) => {
     const { email } = req.session.user;
     const user = await User.findOne({ email });
     const author = user.name;
-    console.log(id, ctx, email, user.name);
     const date = new Date().toJSON();
-    // function addPostData(uid, review, email, author)
     const dateCmy = new Date(date).toLocaleDateString();
     const dateTime = new Date(date).toLocaleTimeString().slice(0, 5);
     await addPostData(id, ctx, email, author, date, dateCmy, dateTime);
@@ -190,7 +176,6 @@ router.route('/:id/ctx').post(sessionChecker, async (req, res) => {
       id, ctx, email, author, dateCmy, dateTime,
     };
     const reviews = await allPosts(id);
-    console.log(reviews);
     res.json(msg);
   } catch (e) {
     console.log(e);
@@ -207,12 +192,10 @@ router.route('/:id/edit').get(sessionChecker, async (req, res) => {
     if (!travel) {
       return res.render('travelOrg');
     }
-    console.log(travel.date)
     const date = new Date(travel.date).toISOString().slice(0, 16);
     await travel.populate('users').execPopulate();
     res.render('travelOrg', { travel, date });
   } catch (e) {
-    console.log(e);
     res.render('error', 'не удалось получить данные');
   }
 });

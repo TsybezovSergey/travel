@@ -3,18 +3,15 @@ const bcrypt = require('bcrypt');
 const User = require('../model/user.js');
 // const dotenv = require('dotenv').config().parsed;
 const router = Router();
-const axios = require('axios');
 require('dotenv').config().parsed;
 const { addReviewData, allReviews } = require('../db/firebase');
 const { sessionChecker } = require('../middleware/auth');
 
-router.get('/:id/review', async (req, res, next) => {
+router.get('/:id/review', async (req, res) => {
   try {
     const { id } = req.params;
     const { email } = req.session.user;
     const userBD = await User.findOne({ email });
-    console.log(userBD._id, id);
-    console.log(userBD._id == id);
     if (userBD._id == id) {
       return res.render('error', { message: 'Увы... нельзя оставить отзыв о себе' });
     }

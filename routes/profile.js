@@ -18,7 +18,7 @@ router.get('/', sessionChecker, async (req, res) => {
 router.post('/', sessionChecker, async (req, res) => {
   try {
     const emailSession = req.session.user.email;
-    console.log(req.body)
+
     const userBD = await User.findOne({ email: emailSession });
     const userCheck = await User.findOne({ email: req.body.email });
     if (!userCheck && userBD._id != userCheck._id) {
@@ -28,11 +28,11 @@ router.post('/', sessionChecker, async (req, res) => {
         name, firstname, email, password, phone,
       } = req.body;
       const newpassword = await bcrypt.hash(password, saltRounds);
-      console.log(newpassword);
+
       await userBD.updateOne({
         name, firstname, email, password: newpassword, phone,
       });
-      console.log(userBD, password);
+
       res.render('sucsess', { message: 'Изменения сохранены' });
     }
   } catch (e) {

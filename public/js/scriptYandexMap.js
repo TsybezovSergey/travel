@@ -23,18 +23,11 @@ function init() {
     multiRoute.model.events.add('requestsuccess', function() {
         // Получение ссылки на активный маршрут.
         var activeRoute = multiRoute.getActiveRoute();
-        // Когда панель добавляется на карту, она
-        // создает маршрут с изначально пустой геометрией. 
-        // Только когда пользователь выберет начальную и конечную точки,
-        // маршрут будет перестроен с непустой геометрией.
-        // Поэтому для избежания ошибки нужно добавить проверку,
-        // что маршрут не пустой.
         if (activeRoute) {
             // Вывод информации об активном маршруте.
             const regexObj = new RegExp(/башкортостан/gi)
             const from = activeRoute.model.multiRoute.properties.get('waypoints')[0].address
             const to = activeRoute.model.multiRoute.properties.get('waypoints')[1].address
-            console.log(from, to)
             for (let elem of [from, to]){
               if (!elem.match(regexObj)){
                 document.getElementById('myModalRegion').classList.toggle('hide');
@@ -42,14 +35,9 @@ function init() {
             }
             [from, to].forEach(el => el.match(regexObj))
             const coordinate = activeRoute.model.multiRoute.properties.get('waypoints')[0].coordinates.toString()
-            const coordinate2 = activeRoute.model.multiRoute.properties.get('waypoints')[1].coordinates.toString()
-            console.log("Откуда: " + document.querySelector('input[placeholder="Откуда"]').value)
+            const coordinate2 = activeRoute.model.multiRoute.properties.get('waypoints')[1].coordinates.toString() 
             document.querySelector('input[name="from"]').value = activeRoute.model.multiRoute.properties.get('waypoints')[0].address
-            console.log("Куда: " + document.querySelector('input[placeholder="Куда"]').value)
             document.querySelector('input[name="to"]').value = activeRoute.model.multiRoute.properties.get('waypoints')[1].address
-            console.log("Длина: " + activeRoute.properties.get("distance").text);
-            console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
-
             document.querySelector('input[name="coordinate2"]').value = coordinate2
             document.querySelector('input[name="coordinate"]').value = coordinate
             document.querySelector('input[name="distance"]').value = activeRoute.properties.get("distance").text;
@@ -100,16 +88,11 @@ function init() {
     });
     
   }, function () {
-    //Башкортостан -> 77677 //16db3a
   });
 }
 
 
 document.addEventListener('click', (event) => {
-  // if (event.target.classList.contains('nav-link')){
-  //   event.target.classList.toggle('nav-link');
-  //   event.target.classList.toggle('nav-link-active');
-  // }
   if (event.target.id === 'closeRegionAlert') {
     document.getElementById('myModalRegion').classList.toggle('hide');
   }
