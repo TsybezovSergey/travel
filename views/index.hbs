@@ -1,0 +1,48 @@
+
+{{#if name}}
+<div class="container">
+  <h1>CD Travels Green</h1>
+  <h3>Привет, {{name.name}}</h3>
+  <h4>Мы путешествуем по Башкортостану</h4>
+</div>
+{{else}}
+<div class="container">
+  <h1>CD Travels Green</h1>
+  <h3>Необходима авторизация</h3>
+  {{#if message}}
+  <h3>Некорректные данные</h3>
+  {{/if}}
+  <h4>Мы путешествуем по Башкортостану</h4>
+  
+</div>
+{{/if}}
+{{#if travels.length}}
+
+<div class="container-travels">
+  {{#each travels}}
+
+  <ul>
+    <li><b>Название поездки</b>: {{this.name}}</li>
+    <li><b>Организатор:</b> <a class='decoration' href='/users/{{this.organizator._id}}'>{{this.organizator.name}}</a></li>
+    <li><b>Дата:</b> {{this.dateCmy}}</li>
+    <li><b>Максимум человек :</b> {{this.count}}</li>
+    <li><b>Откуда:</b> {{this.from}}</li>
+    <li><b>Куда:</b> {{this.to}}</li>
+    {{#if this.users}}
+    <ul><b>Участники:</b> 
+    {{#each this.users}}
+    <li><a class='decoration' href='/users/{{this._id}}'>{{this.name}}</a></li>
+    {{/each}}
+    </ul>
+    {{else}}
+    <li><b>Участники:</b> Вы можете быть первым</li>
+    {{/if}}
+    <li><b>Время в пути:</b> {{this.timeOfTravel}}</li>
+    <li><b>Дистанция:</b> {{this.distance}}</li>
+    <br></br>
+    <a href='/travels/{{this._id}}' class="btn" id={{this._id}} name="details">Подробнее</a>
+  </ul>
+  {{/each}}
+</div>
+
+{{/if}}

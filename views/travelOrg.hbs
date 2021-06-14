@@ -1,0 +1,103 @@
+<link rel='stylesheet' href='/css/profile.css'>
+<script defer src='/js/yandexMapTravel.js'></script>
+<script defer src='/js/travel.js'></script>
+<script defer src="/js/uploadTravel.js"></script>
+<script defer src="/js/travelOrg.js"></script>
+<link rel='stylesheet' href='/css/map.css'>
+  <div class="profile-container">
+    <div>
+    <h1>Редактировать поездку:</h1>
+{{#if travel}}
+
+<div class="container-travels">
+  <form action='/travels/{{travel._id}}/edit' method="POST" id='travelsForm'>
+    <label>Название:</label>
+    <input type='text' class='input-form disable' placeholder="Название" name="travelname" required value="{{travel.name}}">
+    <label>Дата:</label>
+    <input type='datetime-local' class='input-date disable' placeholder="Дата" name="date" required value="{{date}}">
+    <label>Количество человек:</label>
+    <input type='number' class='input-form disable' placeholder="Число" name="count" min=1 max=5 required value="{{travel.count}}">
+    <label>Откуда:</label>
+    <input type='text' class='input-form disable' name="from" required value="{{travel.from}}">
+    <label>Куда:</label>
+    <input type='text' class='input-form disable'  name='to' required value="{{travel.to}}">
+    <label>Ваши координаты:</label>
+    <input type='text' class='input-form disable'  name='coordinate' maxlength=999 required value="{{travel.coordinate}}">
+    <label>Координаты места назначения:</label>
+    <input type='text' class='input-form disable'  name='coordinate2' maxlength=999 required value="{{travel.coordinate2}}">
+    <label>Дистанция:</label>
+    <input type='text' class='input-form disable'  name='distance' required value="{{travel.distance}}">
+    <label>Время в пути:</label>
+    <input type='text' class='input-form disable'  name='timeOfTravel' required value="{{travel.timeOfTravel}}">
+    
+  <ul>
+    <li name='coordinate' id={{travel.coordinate}}><b>Откуда:</b> {{travel.from}}</li>
+    <li name='coordinate2' id={{travel.coordinate2}}><b>Куда:</b> {{travel.to}}</li>
+    {{#if travel.users}}
+    <li><b>Максимальное число:</b>{{travel.count}}</li>
+    <li><b>Сейчас человек:</b> {{travel.users.length}}</li>
+    <ul><b>Участники:</b>
+    {{#each travel.users}}
+    <li><a class='decoration' href='/users/{{this._id}}'>{{this.name}}</a></li>
+    {{/each}}
+    </ul>
+    {{else}}
+    <li><b>Участники:</b> Увы, никого нет</li>
+    {{/if}}
+    <li><b>Время в пути:</b> {{travel.timeOfTravel}}</li>
+    <li><b>Дистанция:</b> {{travel.distance}}</li>
+    <br></br>
+    <div>
+    {{#if organizator}}
+    <h3>Вы организатор поездки</h3>
+    {{else}}
+     <div class='btn-wrap2'>
+        <button class="btn" id='redactTravel' name={{travel._id}}>Редактировать</a>
+    </div>
+      <div class='btn-wrap2'>
+        <button class="btn" id='cancelTravel' name={{travel._id}}>Отменить</a>
+    </div>
+    </form>
+    {{/if}}
+    </div>
+  </ul>
+
+</div>
+{{else}}
+<div class="wrapper">
+  <h3>Вы ещё не организовали поездку...</h3>
+</div>
+
+{{/if}}
+      </div>
+      {{#if travel}}
+      {{#if travel.url}}
+      <div class="block" id={{travel._id}}>
+          <img src='{{travel.url}}'>
+        </div>
+      </div>
+      {{else}}
+        <div class="block" id={{travel._id}}>
+          <input type='file' class="hidden" id="input-file">
+          <button class="btn" id="upload">Загрузить фото</button>
+        </div>
+      {{/if}}
+      {{/if}}
+  </div>
+{{#if travel}}
+<div class="map-wrapper">
+    <div id="map" class='map-yand'></div>
+  </div>
+{{/if}}
+
+
+<div class="hystmodal hide" id="myModalRegion">
+    <div class="modal-wrap">
+        <div class="modal-window" role="dialog" aria-modal="true" >
+            <h3>Кажется, вы не хотите путешествовать по Башкортостану</h3>
+            <div class='btn-wrap2'>
+              <button class="btn" id="closeRegionAlert">окей</button>
+            </div>
+        </div>
+    </div>
+</div>

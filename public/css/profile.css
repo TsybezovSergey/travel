@@ -1,0 +1,110 @@
+
+.profile-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 0 100px 0 100px;
+}
+.profile-container h1 {
+  color: #fff;
+}
+label{
+  color: #fff;
+}
+.buttons {
+  display: flex;
+  grid-template-columns: 50% 50%;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 70%;
+}
+.hidden{
+  display: none;
+}
+.preview {
+  display: flex;
+  padding: .5rem;
+  padding: 5px;
+}
+.preview span{
+  margin-bottom: 10px;
+}
+.preview-image {
+  margin-bottom: .5rem;
+  margin-right: .5rem;
+}
+.preview-image img {
+  width: 350px;
+  height: auto;
+}
+.file-info {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.loader-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 0;
+}
+.block {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.block img{
+  display: flex;
+  width: 100%;
+  width: 350px;
+  height: auto;
+  padding: 5px;
+  border: 2px solid  rgba(0,170,128,1);
+  box-shadow:
+  0 1px rgba(255,255,255,.2) inset,
+  0 3px 5px rgba(0,1,6,.5),
+  0 0 1px 1px rgba(0,1,6,.2);
+}
+.input-form-reg {
+  display: flex;
+  flex-direction: column;
+}
+.travel-container {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px;
+  background: rgba(0,170,128,1);
+  border: 2px solid  rgba(0,170,128,1);
+  box-shadow:
+  0 1px rgba(255,255,255,.2) inset,
+  0 3px 5px rgba(0,1,6,.5),
+  0 0 1px 1px rgba(0,1,6,.2);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.travel-container li {
+  margin-bottom: 10px;
+}
+.myTravels {
+  font-size: 36px;
+}
+@media screen and (max-width:800px){
+  
+.profile-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+
+}
+.block {
+  margin-top: 30px;
+}
+}

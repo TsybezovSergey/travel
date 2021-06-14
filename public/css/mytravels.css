@@ -1,0 +1,76 @@
+.container-mytravels {
+  display: grid;
+  grid-template-columns: 35% 25% 10% 30%;
+  width: 80%;
+}
+
+.wrapper-mytravels {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+
+  margin: 50px;
+}
+.wrapper-mytravels div button {
+  margin-top: 20px;
+}
+.wrapper-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper-img img{
+  padding: 5px;
+  display: flex;
+  width: 300px;
+  height: auto;
+  box-shadow:
+  0 1px rgba(255,255,255,.2) inset,
+  0 3px 5px rgba(0,1,6,.5),
+  0 0 1px 1px rgba(0,1,6,.2);
+}
+div i{
+  color: #fff;
+}
+div p{
+  color: #fff
+}
+div b{
+  color: #fff
+}
+.wrapper-mytravels button {
+  position: relative;
+  right: 0;
+  max-width: 400px;
+}
+.input-mytravels{
+  max-width: 400px;
+  color: #000;
+  font-size: 20px;
+  padding-left: 15px;
+  outline: none;
+  border: none;
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+   height: 32px;
+   margin: 30px 0 30px 0;
+}
+@media screen and (max-width:1000px){
+  .container-mytravels{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 20% 100px;
+  }
+  .wrapper-mytravels {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  
+    margin: 20px;
+  }
+}

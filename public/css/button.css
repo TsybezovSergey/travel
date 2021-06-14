@@ -1,0 +1,107 @@
+.btn {
+  font-size: 90%;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  
+  outline: none;
+  padding: .5em 1em;
+  border-radius: 3px;
+  /* background: linear-gradient(45deg, rgba(48,48,48,1) 25%, rgba(88,88,88,1) 25%, rgba(88,88,88,1) 53%, rgba(88,88,88,1) 77%, rgba(48,48,48,1) 77%); */
+  background: linear-gradient(45deg, rgba(0,170,128,1) 25%, rgba(0,154,10,1) 25%, rgba(0,154,10,1) 53%, rgba(0,154,10,1) 77%, rgba(0,170,128,1) 77%);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+  transition: .22s ease-in-out;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.btn:hover:not(:active) {
+  background: linear-gradient(45deg, rgba(0,170,128,1) 25%, rgba(0,154,10,1) 25%, rgba(0,154,10,1) 53%, rgba(0,154,10,1) 77%, rgba(0,170,128,1) 77%);
+}
+.btn:active, .btn:focus {
+  top: 1px;
+  background: linear-gradient(45deg, rgba(0,170,128,1) 25%, rgba(0,154,10,1) 25%, rgba(0,154,10,1) 53%, rgba(0,154,10,1) 77%, rgba(0,170,128,1) 77%);
+  box-shadow:
+   0 0 1px rgba(0,0,0,.5) inset,
+   0 2px 3px rgba(0,0,0,.5) inset,
+   0 1px 1px rgba(255,255,255,.1);
+}
+.btn-small{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  background:  rgba(0,154,10,1);
+  /* background: rgb(78, 78, 78); */
+  box-shadow:
+  0 1px rgba(255,255,255,.2) inset,
+  0 3px 5px rgba(0,1,6,.5),
+  0 0 1px 1px rgba(0,1,6,.2);
+  transition: .22s ease-in-out;
+}
+.btn-small:before{
+  top: 14px;
+  left: 8px;
+  content: '';
+  background-color:rgb(255, 255, 255);
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  transform: rotate(45deg);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset;
+}
+.btn-small::after{
+  top: 14px;
+  left: 8px;
+  content: '';
+  background-color:rgb(255, 255, 255);
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  transform: rotate(-45deg);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset;
+}
+.btn-small:active{
+  top: 1px;
+  background: rgba(0,170,128,1);
+  /* background: rgb(78, 78, 78); */
+  box-shadow:
+   0 0 1px rgba(0,0,0,.5) inset,
+   0 2px 3px rgba(0,0,0,.5) inset,
+   0 1px 1px rgba(255,255,255,.1);
+}
+
+.king {
+  width: 200px;
+  height: 80px;
+  font-size: 18px;
+}
+.cancel {
+  font-size: 90%;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  padding: .5em 1em;
+  outline: none;
+  border-radius: 3px;
+  background: linear-gradient(45deg, rgba(48,48,48,1) 25%, rgba(88,88,88,1) 25%, rgba(88,88,88,1) 53%, rgba(88,88,88,1) 77%, rgba(48,48,48,1) 77%);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+  transition: .22s ease-in-out;
+  cursor: pointer;
+  z-index: 100;
+}
+.btn-abs{
+  position: absolute;
+  top: 0;
+}

@@ -1,0 +1,46 @@
+<link rel='stylesheet' href='/css/profile.css'>
+<link rel='stylesheet' href='/css/mytravels.css'>
+<script defer src="/js/profile.js"></script>
+  {{#if userBD.travels}}
+  {{#each userBD.travels}}
+<div class="container-mytravels">
+  <div class="wrapper-mytravels">
+    <ul><b>Мои поездки:</b>
+    <br></br>
+    <li><b>Название поездки: </b>{{this.name}}</li>
+    <li><b>Организатор: </b>{{this.organizator.name}}</li>
+    <li><b>Дата: </b>{{this.dateCmy}}</li>
+    <li><b>Количество человек: </b>{{this.count}}</li>
+    <li><b>Откуда: </b>{{this.from}}</li>
+    <li><b>Куда: </b>{{this.to}}</li>
+    </ul>
+    <div>
+    <button class="btn" name="comeout" id={{this._id}}>Отказаться</button>
+    </div>
+      </div>
+  <div class="wrapper-mytravels">
+    {{#if this.url}}
+    <div class="wrapper-img">
+    <img src="{{this.url}}">
+    </div>
+    {{else}}
+    <div class="wrapper-img">
+    <h3>Не найдено</h3>
+    </div>
+  {{/if}}
+  </div>
+  <div class="wrapper-mytravels"></div>
+<div class="wrapper-mytravels">
+  <h3>сообщение для организатора:</h3>
+  <input class="input-mytravels"></input>
+  <button class="btn btn-send" id={{this._id}}>Отправить</button>
+</div>
+  </div>
+{{/each}}
+{{else}}
+<div class='wrapper'>
+  <h3>Вы пока не учавствуете в походе</h3>
+</div>
+{{/if}}
+
+

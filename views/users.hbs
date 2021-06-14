@@ -1,0 +1,48 @@
+<link rel='stylesheet' href='/css/profile.css'>
+<link rel='stylesheet' href='/css/reviews.css'>
+<script defer src="/js/upload.js"></script>
+  <div class="profile-container">
+    <div>
+    <h1>Профиль пользователя:</h1>
+
+        <label>Имя:</label>
+        <input type='text' class='input-form disable' name='name' required value={{userBD.name}}>
+        <label>Фамилия:</label>
+        <input type='text' class='input-form disable' name='firstname' required value={{userBD.firstname}}>
+        <label>Электронная почта:</label>
+        <input type='text' class='input-form disable' name='firstname' required value={{userBD.email}}>
+         <label>Номер телефона:</label>
+        <input type='text' class='input-form disable' name='firstname' required value={{userBD.phone}}>
+        <a class="btn" href='{{userBD._id}}/review'>Оставить отзыв</a>
+        <label>{{message}}</label>
+      </div>
+      {{#if userBD.url}}
+      <div class="block">
+          <img src='{{userBD.url}}'>
+        </div>
+      </div>
+      {{else}}
+        <div class="block">
+          <span>Фото не найдено</span>
+        </div>
+      {{/if}}
+
+  </div>
+{{#if reviewsArray.length}}
+{{#each reviewsArray}}
+<div class="container-rew">
+  {{!-- <img src="avatar_g2.jpg" alt="Avatar" style="width:90px"> --}}
+  <p><i>"{{this.text}}"</i></p>
+  <p><span>{{this.emailAuthor}},</span> {{this.author}}</p>
+  <div>
+
+    <span>{{this.dateCmy}}</span>
+    <span>{{this.dateTime}}</span>
+  </div>
+</div>
+{{/each}}
+{{else}}
+<div class="container-rew">
+  <p>у этого пользователя пока нет отзывов</p>
+</div>
+{{/if}}

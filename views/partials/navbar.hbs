@@ -1,0 +1,76 @@
+<link rel='stylesheet' href='/css/navbar.css'>
+<link rel='stylesheet' href='/css/modal.css'>
+<link rel='stylesheet' href='/css/button.css'>
+<link rel='stylesheet' href='/css/loading.css'>
+<script defer src="/js/navbar.js"></script>
+<header>
+  <div class='login'>
+    {{#if name}}
+      <a class="btn" href="/logout">выйти</a>
+      <b>{{name.name}}</b>
+    {{else}}
+      <button class="btn" href="#" id="getModal">войти</button>
+    {{/if}}
+  </div>
+  <form action='/search' class='input-inline'>
+    {{!-- <input type='text' class='input-style' placeholder="Что ищете?"/> --}}
+    <div class="nav-item">
+      <a class="btn" href="/messages">Личные сообщения</a>
+    </div>
+  </form>
+  <div class='decoration'></div>
+    <nav class="navbar">
+      <div class="nav-item">
+        <a class="nav-link" aria-current="page" href="/">на главную</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="/travels">создать</a>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-link" href="/profile">профиль</a>
+      </div>
+{{#if name}}
+      <div class="nav-item">
+        <a class="nav-link" href="/mytravels">мои походы</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="/travels/{{name._id}}/edit">Я организатор</a>
+      </div>
+{{/if}}
+  </nav>
+<div class="hystmodal hide" id="myModal">
+    <div class="modal-wrap">
+        <div class="modal-window" role="dialog" aria-modal="true" >
+          <form class='input-form-reg' method='post' action="/login">
+            <button class='btn-small' id="closeModal"></button>
+            <h4>Введите почту и пароль:</h4>
+            <input type='text' class='input-form' placeholder="Вашa электронная почта" name='email' required/>
+            <input type='password' class='input-form' placeholder="Ваш пароль" name='password' minlength=5 required/>
+            <span>нет аккаунта?</span>
+            <div class='btn-wrap'>
+              <a class="btn" id="registr"> Зарегистрироваться</a>
+              <button class="btn" type="submit">войти</button> 
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+<div class="hystmodal hide2" id="myModal2">
+    <div class="modal-wrap">
+        <div class="modal-window" role="dialog" aria-modal="true" >
+          <form class='input-form-reg'  method='post' action="/registration">
+            <button class='btn-small' id="closeModal2"></button>
+            <h4> Форма регистрации:</h4>
+            <input type='text' class='input-form' placeholder="Ваше имя" name="name" required minlength=2/>
+            <input type='text' class='input-form' placeholder="Ваша фамилия" name="firstname" required minlength=2/>
+            <input type='email' class='input-form' placeholder="Ваша электронная почта" name="email" required/>
+            <input type='phone' class='input-form' placeholder="Ваш номер телефона" name="phone" required minlength=7/>
+            <input type='password' class='input-form' placeholder="Ваш пароль" name='password' minlength=5 required/>
+            <div class='btn-wrap2'>
+              <button class="btn" id="registrGo">Зарегистрироваться</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>

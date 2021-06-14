@@ -1,0 +1,31 @@
+<script defer src="/js/uploadTravel.js"></script>
+
+<div class="container">
+  <h1 class="message">{{message}}</h1>
+</div>
+{{#if travel}}
+<div class="wrapper-2">
+<div class="ulli">
+  <ul>
+    <li>Название поездки: {{travel.name}}</li>
+    <li>Организатор: {{travel.organizator.name}}</li>
+    <li>Дата: {{travel.dateCmy}}</li>
+    <li>Количество человек: {{travel.count}}</li>
+    <li>Откуда: {{travel.from}}</li>
+    <li>Куда: {{travel.to}}</li>
+  </ul>
+</div>
+</div>
+    <br></br>
+      {{#if travel.url}}
+      <div class="block" id={{travel._id}}>
+          <img src='{{travel.url}}'>
+        </div>
+      </div>
+      {{else}}
+        <div class="block" id={{travel._id}}>
+          <input type='file' class="hidden" id="input-file">
+          <button class="btn" id="upload">Загрузить фото</button>
+        </div>
+      {{/if}}
+{{/if}}

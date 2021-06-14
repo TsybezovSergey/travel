@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Roboto+Condensed:wght@300&display=swap');
+*, *:before, *:after{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: rgb(0, 0, 0);
+  letter-spacing: 1px;
+}
+a, b {
+  color: rgb(255, 253, 253);
+	text-decoration: none;
+  cursor: pointer;
+}
+ul, ol, li {
+	list-style: none;
+  color: #fff;
+}
+.container h1 {
+  width: 80%;
+  display: flex;
+  margin: 0% 10% 0 10%;
+  background: transparent;
+  color: #fff;
+}
+.container h3 {
+  width: 80%;
+  display: flex;
+  margin: 0% 10% 0 10%;
+  background: transparent;
+  color: #fff;
+}
+.container h4 {
+  width: 80%;
+  display: flex;
+  margin: 0% 10% 0 10%;
+  background: transparent;
+  color: #fff;
+}
+.container-travels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 10% 0 10%;
+
+}
+.container-travels ul {
+  padding: 20px;
+}
+span {
+  color: #fff;
+}
+h3 {
+  color: #fff;
+}
+.decoration{
+  text-decoration: underline;
+}
+.disable{
+  pointer-events:none;
+  opacity: .5;
+  }
+
+.wrapper-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

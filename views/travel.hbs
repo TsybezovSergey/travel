@@ -1,0 +1,62 @@
+<link rel='stylesheet' href='/css/profile.css'>
+<script defer src='/js/yandexMapTravel.js'></script>
+<script defer src='/js/travel.js'></script>
+<link rel='stylesheet' href='/css/map.css'>
+  <div class="profile-container">
+    <div>
+    <h1>Информация о поездке:</h1>
+      {{#if travel}}
+
+<div class="container-travels">
+  <ul>
+    <li><b>Название поездки</b>: {{travel.name}}</li>
+    <b>Организатор:</b> <a class='decoration' href='/users/{{travel.organizator._id}}'>{{travel.organizator.name}}</a>
+    <li><b>Дата:</b> {{travel.dateCmy}}</li>
+    <li><b>Количество человек:</b> {{travel.count}}</li>
+    <li name='coordinate' id={{travel.coordinate}}><b>Откуда:</b> {{travel.from}}</li>
+    <li name='coordinate2' id={{travel.coordinate2}}><b>Куда:</b> {{travel.to}}</li>
+    {{#if travel.users}}
+    <li><b>Максимальное число:</b> {{travel.count}}</li>
+    <li><b>Сейчас человек:</b> {{travel.users.length}}</li>
+    <ul><b>Участники:</b>
+    {{#each travel.users}}
+    <li><a class='decoration' href='/users/{{this._id}}'>{{this.name}}</a></li>
+    {{/each}}
+    </ul>
+    {{else}}
+    <li><b>Участники:</b> Вы можете быть первым</li>
+    {{/if}}
+    <li><b>Время в пути:</b> {{travel.timeOfTravel}}</li>
+    <li><b>Дистанция:</b> {{travel.distance}}</li>
+    <br></br>
+    <div>
+    {{#if organizator}}
+    <h3>Вы организатор поездки</h3>
+    {{else}}
+    <button href='/travels/{{travel._id}}' class="btn" id={{travel._id}} name="comein">Присоединиться</a>
+    {{/if}}
+    </div>
+  </ul>
+
+</div>
+
+
+{{/if}}
+      </div>
+      
+      {{#if travel.url}}
+      <div class="block" id={{travel._id}}>
+          <img src='{{travel.url}}'>
+        </div>
+      </div>
+      {{else}}
+        <div class="block" id={{travel._id}}>
+          <h3>фото не найдено</h3>
+          {{!-- <input type='file' class="hidden" id="input-file">
+          <button class="btn" id="upload">Загрузить фото</button> --}}
+        </div>
+      {{/if}}
+  </div>
+<div class="map-wrapper">
+    <div id="map" class='map-yand'></div>
+  </div>

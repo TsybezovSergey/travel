@@ -1,0 +1,49 @@
+<script defer src='/js/scriptYandexMap.js'></script>
+
+<link rel='stylesheet' href='/css/map.css'>
+{{#if message}}
+
+{{/if}}
+
+<div class='modal-map'>
+  <div class="map-wrapper">
+    <div id="map" class='map-yand'></div>
+  </div>
+  <div class='flex-stations'>
+
+    <h3>Данные поездки:</h3>
+    <form action='/travels' method="POST" id='travelsForm'>
+    <label>Название:</label>
+    <input type='text' class='input-form' placeholder="Название" name="name" required>
+    <label>Дата:</label>
+    <input type='datetime-local' class='input-date' placeholder="Дата" name="date" required>
+    <label>Количество человек:</label>
+    <input type='number' class='input-form' placeholder="Число" name="count" min=1 max=5 required>
+    <label>Откуда:</label>
+    <input type='text' class='input-form disable' name="from" required>
+    <label>Куда:</label>
+    <input type='text' class='input-form disable'  name='to' required>
+    <label>Ваши координаты:</label>
+    <input type='text' class='input-form disable'  name='coordinate' maxlength=999 required>
+    <label>Координаты места назначения:</label>
+    <input type='text' class='input-form disable'  name='coordinate2' maxlength=999 required>
+    <label>Дистанция:</label>
+    <input type='text' class='input-form disable'  name='distance' required>
+    <label>Время в пути:</label>
+    <input type='text' class='input-form disable'  name='timeOfTravel' required>
+    <button class="btn">Продолжить</button>
+    </form>
+  </div>
+</div>
+
+<div class="hystmodal hide" id="myModalRegion">
+    <div class="modal-wrap">
+        <div class="modal-window" role="dialog" aria-modal="true" >
+            <h3>Кажется, вы не хотите путешествовать по Башкортостану</h3>
+            <div class='btn-wrap2'>
+              <button class="btn" id="closeRegionAlert">Понятно</button>
+            </div>
+        </div>
+    </div>
+</div>
+
