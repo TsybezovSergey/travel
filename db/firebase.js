@@ -1,17 +1,14 @@
 const admin = require('firebase-admin');
-const dotenv = require('dotenv').config().parsed;
+require('dotenv').config().parsed;
 
-// Fetch the service account key JSON file contents
 const serviceAccount = require('../serviceAccountKey.json');
 
-// Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: process.env.DB_URL,
   databaseAuthVariableOverride: null,
 });
 
-// As an admin, the app has access to read and write all data, regardless of Security Rules
 const db = admin.database();
 const dbRef = db.ref();
 

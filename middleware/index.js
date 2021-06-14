@@ -15,12 +15,11 @@ const upload = require('../routes/upload');
 const users = require('../routes/users');
 const mytravels = require('../routes/mytravels');
 const messages = require('../routes/messages');
-
-const dbConnection = require('../db/config');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
-module.exports = function (app) {
-  const PORT = process.env.PORT || 3000;
+const dbConnection = require('../db/config');
 
+module.exports = function (app) {
+  const PORT = process.env.PORT || 8000;
   app.use(fileupload());
   const hbs = exphbs.create({
     defaultLayout: 'main',
@@ -31,16 +30,14 @@ module.exports = function (app) {
   app.engine('hbs', hbs.engine);
 
   app.set('views', path.join('views'));
-  // app.engine('hbs', hbs.engine);
+
   app.set('view engine', 'hbs');
-  // app.set('views', 'views')
+
   app.use(express.urlencoded({ extended: true, limit: '150mb' }));
   app.use(express.json({ limit: '150mb' }));
   app.use(express.static(path.join('public')));
 
   app.use(cookieParser());
-
-  const url = 'mongodb://localhost:27017/dbProject';
 
   app.use(session({
     key: 'user_sid',
@@ -51,7 +48,7 @@ module.exports = function (app) {
       expires: 1000 * 60 * 100,
     },
     store: MongoStore.create({
-      mongoUrl: url,
+      mongoUrl: process.env.URL,
     }),
   }));
 
