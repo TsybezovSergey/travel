@@ -28,7 +28,7 @@
     "moment": "^2.29.1",
     "moment-parseformat": "^4.0.0",
     "mongo-store": "0.0.2",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.12.14",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

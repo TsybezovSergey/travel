@@ -3,9 +3,8 @@ const User = require('../model/user.js');
 const Travel = require('../model/travel.js');
 const { sessionChecker } = require('../middleware/auth');
 const { addPostData, allPosts } = require('../db/firebase');
-
 require('dotenv').config().parsed;
-// const dotenv = require('dotenv').config().parsed;
+
 const router = Router();
 
 router.route('/').get(sessionChecker, async (req, res) => {

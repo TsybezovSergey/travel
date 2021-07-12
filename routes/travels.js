@@ -6,7 +6,7 @@ const { sessionChecker } = require('../middleware/auth');
 const { addPostData, allPosts } = require('../db/firebase');
 const { findOne } = require('../model/user.js');
 require('dotenv').config().parsed;
-// const dotenv = require('dotenv').config().parsed;
+
 const router = Router();
 
 router.route('/').get(sessionChecker, async (req, res) => {

@@ -33,7 +33,7 @@ if (document.querySelector('.btn-send')) {
   const send = async (event) => {
     const { id } = event.target;
     const ctx = event.target.previousElementSibling.value;
-s
+
     const response = await fetch(`/travels/${id}/ctx`, {
       method: 'POST',
       body: JSON.stringify({ id, ctx }),
